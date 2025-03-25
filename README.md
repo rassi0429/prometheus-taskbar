@@ -67,14 +67,14 @@ Prometheus Taskbarは、PrometheusメトリクスをWindowsのタスクバーに
 ## ビルド方法
 
 ```
-git clone https://github.com/yourusername/prometheus-taskbar.git
+git clone https://github.com/rassi0429/prometheus-taskbar.git
 cd prometheus-taskbar
 dotnet build
 ```
 
 ## 開発環境のセットアップ
 
-1. リポジトリをクローン: `git clone https://github.com/yourusername/prometheus-taskbar.git`
+1. リポジトリをクローン: `git clone https://github.com/rassi0429/prometheus-taskbar.git`
 2. 依存関係をインストール: `dotnet restore`
 3. プロジェクトをビルド: `dotnet build`
 4. アプリケーションを実行: `dotnet run --project PrometheusTaskbar/PrometheusTaskbar.csproj`
