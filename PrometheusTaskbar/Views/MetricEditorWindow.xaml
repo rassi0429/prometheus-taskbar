@@ -1,0 +1,76 @@
+<Window x:Class="PrometheusTaskbar.Views.MetricEditorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PrometheusTaskbar.Views"
+        mc:Ignorable="d"
+        Title="メトリクス設定" Height="450" Width="500"
+        WindowStartupLocation="CenterOwner">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Content="メトリクス名:" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Text="{Binding MetricName}"/>
+
+        <Label Grid.Row="1" Grid.Column="0" Content="PromQLクエリ:" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding PromQlQuery}"/>
+
+        <Label Grid.Row="2" Grid.Column="0" Content="表示名:" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Text="{Binding DisplayName}"/>
+
+        <Label Grid.Row="3" Grid.Column="0" Content="ラベル:" VerticalAlignment="Top" Margin="0,10,0,0"/>
+        <Grid Grid.Row="3" Grid.Column="1" Margin="5,10,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <DataGrid Grid.Row="1" Margin="0,5,0,0" 
+                      ItemsSource="{Binding Labels}" 
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="False"
+                      CanUserDeleteRows="False"
+                      SelectionMode="Single"
+                      x:Name="LabelsDataGrid"
+                      Height="150">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="キー" Binding="{Binding Key}" Width="*"/>
+                    <DataGridTextColumn Header="値" Binding="{Binding Value}" Width="*"/>
+                    <DataGridTemplateColumn Header="操作" Width="60">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="削除" Click="DeleteLabel_Click" Margin="2" Padding="5,0"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+        <Button Grid.Row="4" Grid.Column="1" Content="ラベル追加" HorizontalAlignment="Left" Margin="5,5,0,0" Padding="10,2" Click="AddLabel_Click"/>
+
+        <Label Grid.Row="5" Grid.Column="0" Content="単位:" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="5" Grid.Column="1" Margin="5" Text="{Binding Unit}"/>
+
+        <!-- Buttons -->
+        <StackPanel Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+            <Button Content="キャンセル" Width="80" Margin="0,0,10,0" Click="Cancel_Click"/>
+            <Button Content="保存" Width="80" Click="Save_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

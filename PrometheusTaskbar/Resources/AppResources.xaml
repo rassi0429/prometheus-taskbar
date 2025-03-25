@@ -1,0 +1,32 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Simple icon for the application -->
+    <DrawingImage x:Key="AppIcon">
+        <DrawingImage.Drawing>
+            <DrawingGroup>
+                <GeometryDrawing Brush="#FF5C5C5C" Geometry="M0,0 L16,0 L16,16 L0,16 Z" />
+                <GeometryDrawing Brush="#FFFF7700">
+                    <GeometryDrawing.Geometry>
+                        <PathGeometry>
+                            <PathFigure StartPoint="2,2" IsClosed="True">
+                                <LineSegment Point="14,2" />
+                                <LineSegment Point="14,14" />
+                                <LineSegment Point="2,14" />
+                            </PathFigure>
+                        </PathGeometry>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="White">
+                    <GeometryDrawing.Geometry>
+                        <PathGeometry>
+                            <PathFigure StartPoint="4,4" IsClosed="False">
+                                <LineSegment Point="12,4" />
+                                <LineSegment Point="8,12" />
+                            </PathFigure>
+                        </PathGeometry>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+</ResourceDictionary>
